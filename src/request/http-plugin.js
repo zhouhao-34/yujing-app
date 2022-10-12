@@ -4,7 +4,7 @@
  * @Author: Aidam_Bo
  * @Date: 2021-05-08 11:11:40
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-28 16:01:39
+ * @LastEditTime: 2022-10-11 15:14:44
  */
 import axios from "axios";
 import { Notify } from 'vant';
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "development") {
   axios.defaults.baseURL = "";
 } else if (process.env.NODE_ENV === "production") {
   // axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
-  axios.defaults.baseURL = "http://192.168.3.51:8010/";
+  axios.defaults.baseURL = "http://yujingapp.s-easy.cn";
 }
 
 // 响应拦截器
@@ -58,7 +58,11 @@ function request(method, url, params, config) {
       text: 'Loading',
       background: 'rgba(0, 0, 0, 0.7)',
     })
-   let user=JSON.parse(localStorage.getItem('user')) 
+    console.log('localStorage.getItem(): ', localStorage.getItem('user'));
+    let user=null
+    if (localStorage.getItem('user')!=='') {
+      user=JSON.parse(localStorage.getItem('user')) 
+    }
    let obj={}
    if (user!==null) {
     if (url==='/api/login') {
@@ -73,7 +77,7 @@ function request(method, url, params, config) {
       .then(
         (response) => {
           loading.close()
-          if (response.data.msg==='验证失败') {
+          if (response.data.msg==='验证失败'||response.data.msg==='非法访问！') {
             Notify({ type: 'danger', message: '身份信息失效，请重新登录' });
             resetSetItem('refresh',true)
           }else{

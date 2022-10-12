@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-28 12:30:14
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-29 10:00:46
+ * @LastEditTime: 2022-10-11 16:45:55
  * @FilePath: \yujing-app\src\components\menu.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -118,7 +118,10 @@ export default {
         });
     },
     onClickLeft() {
-      this.$router.push({ path: "/user", query: {} });
+      if (process.env.NODE_ENV === "development") {
+        this.$router.push({ path: "/user", query: {} });
+      }
+      window.android.Tiaozhuan("我的");
       sessionStorage.setItem("menu", 3);
     },
     onClickRight() {
@@ -135,12 +138,17 @@ export default {
         .request("post", this.$API.usermenuedit, params)
         .then((res) => {
           console.log("res", res);
+          if (res.status === "1") {
+            if (process.env.NODE_ENV === "development") {
+              this.$router.push({ path: "/user", query: {} });
+            }
+            window.android.Tiaozhuan("我的");
+            sessionStorage.setItem("menu", 3);
+          }
         })
         .catch((err) => {
           console.log("err:", err);
         });
-      this.$router.push({ path: "/user", query: {} });
-      sessionStorage.setItem("menu", 3);
     },
 
     onEnd() {

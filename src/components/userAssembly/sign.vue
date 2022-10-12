@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-03 09:53:37
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-28 08:25:02
+ * @LastEditTime: 2022-10-11 16:56:58
  * @FilePath: \yujing-app\src\components\userAssembly\sign.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -65,15 +65,16 @@ export default {
         .then((res) => {
           console.log("res", res);
           if (res.status === "1") {
+            if (process.env.NODE_ENV === "development") {
+              this.$router.push({ path: "/", query: {} });
+            }
             localStorage.setItem("user", JSON.stringify(res.msg));
-            this.$router.push({ path: "/", query: {} });
+            window.android.Tiaozhuan("看板");
           }
         })
         .catch((err) => {
           console.log("err:", err);
         });
-
-      sessionStorage.setItem("menu", 0);
     },
   },
 };

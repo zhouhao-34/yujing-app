@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-02 10:09:36
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-29 09:57:07
+ * @LastEditTime: 2022-10-11 17:05:56
  * @FilePath: \yujing-app\src\views\Home.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -24,7 +24,6 @@
         :key="i"
         >{{ v.label }}</van-tabbar-item
       >
-      <van-tabbar-item icon="manager-o">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -102,6 +101,11 @@ export default {
               }
             }
           }
+          this.menuExhibition.push({
+            label: "我的",
+            address: "user",
+            icon: "manager-o",
+          });
           let menu = sessionStorage.getItem("menu");
           this.onChange(menu * 1);
         })
@@ -112,19 +116,16 @@ export default {
     onChange(index) {
       console.log("index: ", index);
       sessionStorage.setItem("menu", index);
-      if (index === 1 || index === 2 || index === 3) {
-        this.barTitle = this.menuExhibition[index - 1].label;
-        console.log("this.menuExhibition: ", this.menuExhibition);
-        this.$router.push({
-          path: this.menuExhibition[index - 1].address,
-          query: {},
-        });
-        this.barTitleShow = true;
-      }
-      if (index === 0) {
-        this.barTitle = "我的";
-        this.$router.push({ path: "/user", query: {} });
+      this.barTitle = this.menuExhibition[index].label;
+      console.log("this.menuExhibition: ", this.menuExhibition);
+      this.$router.push({
+        path: this.menuExhibition[index].address,
+        query: {},
+      });
+      if (index === 3) {
         this.barTitleShow = false;
+      } else {
+        this.barTitleShow = true;
       }
     },
     onSelect(val) {

@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-28 09:35:56
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-28 15:52:55
+ * @LastEditTime: 2022-10-11 16:32:48
  * @FilePath: \yujing-app\src\components\container.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -90,7 +90,10 @@ export default {
   mounted() {},
   methods: {
     onClickLeft() {
-      this.$router.push({ path: "/user", query: {} });
+      if (process.env.NODE_ENV === "development") {
+        this.$router.push({ path: "/user", query: {} });
+      }
+      window.android.Tiaozhuan("我的");
       sessionStorage.setItem("menu", 3);
     },
   },

@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-03 09:20:42
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-28 15:00:02
+ * @LastEditTime: 2022-10-11 16:54:13
  * @FilePath: \yujing-app\src\components\user.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -50,12 +50,14 @@
         <van-cell title="通知" is-link @click="jump('通知')" />
       </van-cell-group>
       <van-cell-group>
-        <van-cell title="账号管理" is-link to="/account" />
-        <van-cell title="菜单设置" is-link to="/menu" />
+        <!-- <van-cell title="账号管理" is-link to="/account" /> -->
+        <van-cell title="菜单设置" is-link @click="jumpTwo()" />
       </van-cell-group>
 
       <div class="button">
-        <van-button type="danger" block round to="/sign">退出登录</van-button>
+        <van-button type="danger" block round @click="tuichu"
+          >退出登录</van-button
+        >
       </div>
     </div>
   </div>
@@ -108,7 +110,24 @@ export default {
     },
     jump(title) {
       sessionStorage.setItem("condition", title);
-      this.$router.push({ path: "/container", query: {} });
+
+      if (process.env.NODE_ENV === "development") {
+        this.$router.push({ path: "/container", query: {} });
+      }
+      window.android.Tiaozhuan("点击菜单");
+    },
+    jumpTwo() {
+      if (process.env.NODE_ENV === "development") {
+        this.$router.push({ path: "/menu", query: {} });
+      }
+      window.android.Tiaozhuan("菜单设置");
+    },
+    tuichu() {
+      sessionStorage.setItem("menu", -1);
+      if (process.env.NODE_ENV === "development") {
+        this.$router.push({ path: "/sign", query: {} });
+      }
+      window.android.Tiaozhuan("登录");
     },
   },
 };

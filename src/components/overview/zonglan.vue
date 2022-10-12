@@ -10,7 +10,7 @@
       </div>
       <div>
         <div>生产型号</div>
-        <div>{{ topList.ModelName }}</div>
+        <div>{{ topList.ModelID }}</div>
       </div>
       <div>
         <div>换模次数</div>
