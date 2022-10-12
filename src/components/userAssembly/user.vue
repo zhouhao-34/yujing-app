@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-03 09:20:42
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-11 16:54:13
+ * @LastEditTime: 2022-10-12 11:12:08
  * @FilePath: \yujing-app\src\components\user.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -53,7 +53,6 @@
         <!-- <van-cell title="账号管理" is-link to="/account" /> -->
         <van-cell title="菜单设置" is-link @click="jumpTwo()" />
       </van-cell-group>
-
       <div class="button">
         <van-button type="danger" block round @click="tuichu"
           >退出登录</van-button
@@ -109,8 +108,7 @@ export default {
       return v.replace(/(\w{1}).*(\w{1})@(.*)/, "$1***$2@$3");
     },
     jump(title) {
-      sessionStorage.setItem("condition", title);
-
+      localStorage.setItem("condition", title);
       if (process.env.NODE_ENV === "development") {
         this.$router.push({ path: "/container", query: {} });
       }

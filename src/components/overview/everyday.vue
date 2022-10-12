@@ -176,7 +176,7 @@ export default {
           font-size: 14px;
           .label {
             text-align: right;
-            width: 80px;
+            width: 70px;
             color: #909399;
           }
         }

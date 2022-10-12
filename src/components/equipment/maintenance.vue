@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-22 10:01:39
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-26 11:02:05
+ * @LastEditTime: 2022-10-12 12:57:14
  * @FilePath: \yujing-app\src\components\equipment\maintenance.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -99,6 +99,7 @@ export default {
 .maintenance {
   height: 100%;
   padding: 5px 0px;
+  box-sizing: border-box;
   .van-nav-bar {
     background: #fe0102;
     border-bottom: 0px;
@@ -134,7 +135,7 @@ export default {
         font-size: 14px;
         .label {
           text-align: right;
-          width: 80px;
+          width: 70px;
           color: #909399;
         }
       }

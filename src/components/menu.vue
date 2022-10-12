@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-28 12:30:14
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-11 16:45:55
+ * @LastEditTime: 2022-10-12 10:58:51
  * @FilePath: \yujing-app\src\components\menu.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -27,13 +27,13 @@
         @end="onEnd"
       >
         <template #item="{ element }">
-          <van-cell :border="false" :title="element.label" />
+          <van-cell :border="true" :title="element.label" />
         </template>
       </draggable>
       <div class="bottom-title">全部菜单</div>
       <div>
         <van-cell
-          :border="false"
+          :border="true"
           v-for="(v, i) in routeList"
           :key="i"
           :title="v.label"
@@ -70,6 +70,7 @@ export default {
         { id: 10, label: "通知", address: "/news" },
       ],
       routeList: [],
+      aa: "",
     };
   },
   watch: {

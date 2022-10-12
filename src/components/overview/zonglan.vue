@@ -10,7 +10,7 @@
       </div>
       <div>
         <div>生产型号</div>
-        <div>{{ topList.ModelID }}</div>
+        <div>{{ topList.PLC_modelID }}</div>
       </div>
       <div>
         <div>换模次数</div>
@@ -53,7 +53,7 @@
       <div class="block" v-for="(v, i) in overviewData" :key="i">
         <div class="title">
           <div class="title-title">{{ v.ModelName }}</div>
-          <div class="title-model">{{ v.ModelID }}</div>
+          <div class="title-model">型号{{ v.PLC_modelID }}</div>
         </div>
         <div class="block-content">
           <div>
@@ -95,6 +95,7 @@ export default {
       topList: {},
       dataTime: "",
       timer: null,
+      timer2: null,
       overviewData: [],
     };
   },
@@ -131,6 +132,14 @@ export default {
         ":" +
         ((second + "").length === 1 ? "0" + second : second);
     }, 1000);
+    this.timer2 = setInterval(() => {
+      this.queryKanban();
+    }, 10000);
+  },
+
+  beforeUnmount() {
+    clearInterval(this.timer2);
+    this.timer2 = null;
   },
   methods: {
     queryKanban() {
@@ -219,7 +228,7 @@ export default {
           font-size: 14px;
           .label {
             text-align: right;
-            width: 80px;
+            width: 70px;
             color: #909399;
           }
         }

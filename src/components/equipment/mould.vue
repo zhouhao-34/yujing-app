@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-03 09:06:27
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-28 15:49:16
+ * @LastEditTime: 2022-10-12 12:59:17
  * @FilePath: \yujing-app\src\components\mould.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -33,7 +33,7 @@
             <div class="label">适用型号:</div>
             <div>{{ v.mojuNub }}</div>
           </div>
-          <div>
+          <div class="time">
             <div class="label">上次保养时间:</div>
             <div>{{ v.baoyangTime }}</div>
           </div>
@@ -79,7 +79,7 @@ export default {
     queryMojulist() {
       const params = {
         current_page: this.current_page,
-        per_page: 4,
+        per_page: 10,
       };
       this.$http
         .request("post", this.$API.mojulist, params)
@@ -157,8 +157,14 @@ export default {
         font-size: 14px;
         .label {
           text-align: right;
-          width: 90px;
+          width: 70px;
           color: #909399;
+        }
+      }
+      .time {
+        width: 100%;
+        .label {
+          width: 90px;
         }
       }
     }
