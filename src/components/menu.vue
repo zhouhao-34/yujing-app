@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-28 12:30:14
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-12 10:58:51
+ * @LastEditTime: 2022-10-13 14:31:30
  * @FilePath: \yujing-app\src\components\menu.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,10 +10,7 @@
   <div class="menu">
     <van-nav-bar
       title="菜单设置"
-      left-text="返回"
       right-text="完成"
-      left-arrow
-      @click-left="onClickLeft"
       @click-right="onClickRight"
     ></van-nav-bar>
     <div class="menu-bottom">

@@ -2,19 +2,13 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-28 09:35:56
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-12 09:44:12
+ * @LastEditTime: 2022-10-13 14:30:48
  * @FilePath: \yujing-app\src\components\container.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <template>
   <div class="container">
-    <van-nav-bar
-      :title="condition"
-      left-text="返回"
-      left-arrow
-      :border="false"
-      @click-left="onClickLeft"
-    ></van-nav-bar>
+    <van-nav-bar :title="condition" :border="false"></van-nav-bar>
     <div class="container-bottom">
       <overview v-if="condition === '看板'"></overview>
       <task v-if="condition === '生产任务'"></task>

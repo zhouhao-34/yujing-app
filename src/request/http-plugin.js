@@ -4,7 +4,7 @@
  * @Author: Aidam_Bo
  * @Date: 2021-05-08 11:11:40
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-11 15:14:44
+ * @LastEditTime: 2022-10-13 14:16:30
  */
 import axios from "axios";
 import { Notify } from 'vant';
@@ -58,7 +58,6 @@ function request(method, url, params, config) {
       text: 'Loading',
       background: 'rgba(0, 0, 0, 0.7)',
     })
-    console.log('localStorage.getItem(): ', localStorage.getItem('user'));
     let user=null
     if (localStorage.getItem('user')!=='') {
       user=JSON.parse(localStorage.getItem('user')) 

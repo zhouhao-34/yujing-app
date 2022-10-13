@@ -57,19 +57,19 @@
         </div>
         <div class="block-content">
           <div>
-            <div class="label">计划生产：</div>
+            <div class="label">计划生产:</div>
             <div>{{ v.Planproduction }}</div>
           </div>
           <div>
-            <div class="label">实际生产：</div>
+            <div class="label">实际生产:</div>
             <div>{{ v.ActualProduction }}</div>
           </div>
           <div>
-            <div class="label">开始时间：</div>
+            <div class="label">开始时间:</div>
             <div>{{ v.startTime }}</div>
           </div>
           <div>
-            <div class="label">结束事件：</div>
+            <div class="label">结束事件:</div>
             <div>{{ v.endTime }}</div>
           </div>
         </div>
@@ -136,7 +136,6 @@ export default {
       this.queryKanban();
     }, 10000);
   },
-
   beforeUnmount() {
     clearInterval(this.timer2);
     this.timer2 = null;
@@ -180,9 +179,9 @@ export default {
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
+    box-sizing: border-box;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
     box-sizing: border-box;
     padding-bottom: 0px;
     > div {
@@ -218,7 +217,6 @@ export default {
       .block-content {
         display: flex;
         flex-wrap: wrap;
-        padding: 5px;
         > div {
           width: 50%;
           line-height: 20px;
@@ -227,8 +225,9 @@ export default {
           padding: 5px;
           font-size: 14px;
           .label {
+            font-size: 12px;
             text-align: right;
-            width: 70px;
+            width: 60px;
             color: #909399;
           }
         }

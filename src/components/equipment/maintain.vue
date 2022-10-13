@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-22 08:55:40
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-09-28 10:33:36
+ * @LastEditTime: 2022-10-13 13:53:52
  * @FilePath: \yujing-app\src\components\equipment\maintain.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -227,9 +227,11 @@ export default {
               padding: 5px;
               box-sizing: border-box;
               line-height: 20px;
+              font-size: 14px;
               .label {
+                font-size: 12px;
                 text-align: right;
-                width: 70px;
+                width: 60px;
                 color: #909399;
               }
             }

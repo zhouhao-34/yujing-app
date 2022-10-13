@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-20 10:04:39
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-12 12:52:18
+ * @LastEditTime: 2022-10-13 13:50:45
  * @FilePath: \yujing-app\src\components\news.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -185,7 +185,8 @@ export default {
             font-size: 14px;
             .label {
               text-align: right;
-              width: 70px;
+              font-size: 12px;
+              width: 60px;
               color: #909399;
             }
           }

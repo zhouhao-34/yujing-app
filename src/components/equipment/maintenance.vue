@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-22 10:01:39
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-12 12:57:14
+ * @LastEditTime: 2022-10-13 13:58:43
  * @FilePath: \yujing-app\src\components\equipment\maintenance.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -24,16 +24,20 @@
           <div>{{ v.lifeValue }}</div>
         </div>
         <div>
+          <div class="label">寿命类型:</div>
+          <div>{{ v.unit }}</div>
+        </div>
+        <div>
           <div class="label">维保方式:</div>
           <div>{{ v.typeCL }}</div>
         </div>
         <div>
-          <div class="label">维保时间:</div>
-          <div>{{ v.createTimeCL }}</div>
-        </div>
-        <div>
           <div class="label">维保人:</div>
           <div>{{ v.userName }}</div>
+        </div>
+        <div class="time">
+          <div class="label">维保时间:</div>
+          <div>{{ v.createTimeCL }}</div>
         </div>
       </div>
     </div>
@@ -134,9 +138,16 @@ export default {
         padding: 5px;
         font-size: 14px;
         .label {
+          font-size: 12px;
           text-align: right;
-          width: 70px;
+          width: 60px;
           color: #909399;
+        }
+      }
+      .time {
+        width: 100%;
+        .label {
+          width: 60px;
         }
       }
     }

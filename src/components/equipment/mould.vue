@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-03 09:06:27
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-12 12:59:17
+ * @LastEditTime: 2022-10-13 13:54:24
  * @FilePath: \yujing-app\src\components\mould.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -156,15 +156,16 @@ export default {
         padding: 5px;
         font-size: 14px;
         .label {
+          font-size: 12px;
           text-align: right;
-          width: 70px;
+          width: 60px;
           color: #909399;
         }
       }
       .time {
         width: 100%;
         .label {
-          width: 90px;
+          width: 80px;
         }
       }
     }
