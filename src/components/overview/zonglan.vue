@@ -3,7 +3,7 @@
     <div class="overview-top">
       <div>
         <div>生产班次</div>
-        <div>{{ topList.ShiftName }}班</div>
+        <div>{{ topList.ShiftName }}</div>
       </div>
       <div>
         <div>{{ dataTime }}</div>
@@ -132,11 +132,9 @@ export default {
         ":" +
         ((second + "").length === 1 ? "0" + second : second);
     }, 1000);
-    this.timer2 = setInterval(() => {
-      this.queryKanban();
-    }, 10000);
   },
   beforeUnmount() {
+    console.log(this.timer2, "1111");
     clearInterval(this.timer2);
     this.timer2 = null;
   },
@@ -149,19 +147,37 @@ export default {
           console.log("queryKanban", res);
           if (res.status === "1") {
             this.topList = res.msg;
+            if (this.topList.Target > 0) {
+              this.topList.completion =
+                ((this.topList.Actual / this.topList.Target) * 100).toFixed(0) +
+                "%";
+            } else {
+              this.topList.completion = "0%";
+            }
+            this.topList.OEE = this.topList.OEE / 100 + "%";
             this.overviewData = res.msg.planList;
             for (let i = 0; i < this.overviewData.length; i++) {
-              this.overviewData[i].createTime = this.overviewData[
-                i
-              ].createTime.slice(0, 10);
-              this.overviewData[i].endTime = this.overviewData[i].endTime.slice(
-                0,
-                10
-              );
-              this.overviewData[i].startTime = this.overviewData[
-                i
-              ].startTime.slice(0, 10);
+              if (this.overviewData[i].createTime !== null) {
+                this.overviewData[i].createTime = this.overviewData[
+                  i
+                ].createTime.slice(0, 10);
+              }
+              if (this.overviewData[i].endTime !== null) {
+                this.overviewData[i].endTime = this.overviewData[
+                  i
+                ].endTime.slice(0, 10);
+              }
+              if (this.overviewData[i].startTime !== null) {
+                this.overviewData[i].startTime = this.overviewData[
+                  i
+                ].startTime.slice(0, 10);
+              }
             }
+          }
+          if (this.timer2 === null) {
+            this.timer2 = setInterval(() => {
+              this.queryKanban();
+            }, 10000);
           }
         })
         .catch((err) => {

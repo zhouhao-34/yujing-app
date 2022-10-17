@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-03 09:06:27
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-13 13:54:24
+ * @LastEditTime: 2022-10-14 16:31:59
  * @FilePath: \yujing-app\src\components\mould.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -94,13 +94,6 @@ export default {
                 0,
                 10
               );
-              if (res.msg.data[i].baoyangTime !== null) {
-                res.msg.data[i].baoyangTime = res.msg.data[i].baoyangTime.slice(
-                  0,
-                  10
-                );
-              }
-
               this.dataList.push(res.msg.data[i]);
             }
             this.loading = false;

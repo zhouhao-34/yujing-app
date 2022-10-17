@@ -4,13 +4,13 @@
  * @Author: Aidam_Bo
  * @Date: 2021-05-08 11:11:40
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-13 14:16:30
+ * @LastEditTime: 2022-10-14 16:38:51
  */
 import axios from "axios";
 import { Notify } from 'vant';
 import resetSetItem from '../utils/session';
-import { ElLoading } from 'element-plus'
-var loading=null
+// import { ElLoading } from 'element-plus'
+// var loading=null
 // 设置请求超时时间
 axios.defaults.timeout = 10000;
 window.resetSetItem=resetSetItem
@@ -21,7 +21,8 @@ if (process.env.NODE_ENV === "development") {
   axios.defaults.baseURL = "";
 } else if (process.env.NODE_ENV === "production") {
   // axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
-  axios.defaults.baseURL = "http://yujingapp.s-easy.cn";
+  // axios.defaults.baseURL = "http://yujingapp.s-easy.cn";
+  axios.defaults.baseURL ='http://yujingapp-ceshi.s-easy.cn';
 }
 
 // 响应拦截器
@@ -35,7 +36,7 @@ axios.interceptors.response.use(
       return Promise.reject(response);
     }
   },
-  //   状态码不是2开头的
+  // 状态码不是2开头的
   (error) => {
     if (error.response.status) {
       switch (error.response.status) {
@@ -53,11 +54,11 @@ axios.interceptors.response.use(
 );
 function request(method, url, params, config) {
   return new Promise((resolve, reject) => {
-    loading = ElLoading.service({
-      lock: true,
-      text: 'Loading',
-      background: 'rgba(0, 0, 0, 0.7)',
-    })
+    // loading = ElLoading.service({
+    //   lock: true,
+    //   text: 'Loading',
+    //   background: 'rgba(0, 0, 0, 0.7)',
+    // })
     let user=null
     if (localStorage.getItem('user')!=='') {
       user=JSON.parse(localStorage.getItem('user')) 
@@ -75,7 +76,7 @@ function request(method, url, params, config) {
     axios[method](url,obj , Object.assign({}, config))
       .then(
         (response) => {
-          loading.close()
+          // loading.close()
           if (response.data.msg==='验证失败'||response.data.msg==='非法访问！') {
             Notify({ type: 'danger', message: '身份信息失效，请重新登录' });
             resetSetItem('refresh',true)
@@ -85,7 +86,7 @@ function request(method, url, params, config) {
          
         },
         (err) => {
-          loading.close()
+          // loading.close()
           if (err.Cancel) {
             console.log("canceled", err);
           } else {
@@ -96,7 +97,7 @@ function request(method, url, params, config) {
       )
       .catch((err) => {
         reject(err);
-        loading.close()
+        // loading.close()
       });
   });
 }

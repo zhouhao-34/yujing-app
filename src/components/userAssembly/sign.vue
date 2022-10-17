@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-03 09:53:37
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-11 16:56:58
+ * @LastEditTime: 2022-10-14 14:23:59
  * @FilePath: \yujing-app\src\components\userAssembly\sign.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { Notify } from "vant";
 export default {
   name: "",
   components: {
@@ -50,7 +51,17 @@ export default {
     //}
   },
   created() {},
-  mounted() {},
+  mounted() {
+    // let user = JSON.parse(localStorage.getItem("user"));
+    // if (user !== null && user !== "") {
+    //   if (user.userID !== undefined && user.userID !== "") {
+    //     if (process.env.NODE_ENV === "development") {
+    //       this.$router.push({ path: "/", query: {} });
+    //     }
+    //     window.android.Tiaozhuan("看板");
+    //   }
+    // }
+  },
   methods: {
     onSubmit(val) {
       console.log("val: ", val);
@@ -70,6 +81,8 @@ export default {
             }
             localStorage.setItem("user", JSON.stringify(res.msg));
             window.android.Tiaozhuan("看板");
+          } else {
+            Notify({ type: "danger", message: res.msg });
           }
         })
         .catch((err) => {

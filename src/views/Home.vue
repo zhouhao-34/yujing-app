@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-02 10:09:36
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-12 09:26:41
+ * @LastEditTime: 2022-10-14 14:53:13
  * @FilePath: \yujing-app\src\views\Home.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -44,11 +44,7 @@ export default {
     return {
       barTitle: "",
       barTitleShow: false,
-      menuExhibition: [
-        // { id: 1, label: "看板", address: "/", icon: "idcard" },
-        // { id: 5, label: "维保信息", address: "/maintain", icon: "desktop-o" },
-        // { id: 10, label: "通知", address: "/news", icon: "chat-o" },
-      ],
+      menuExhibition: [],
       menuSelect: 0,
       showPopover: false,
       actions: [{ text: "全部通知" }, { text: "待处理" }, { text: "已处理" }],
@@ -112,14 +108,19 @@ export default {
     onChange(index) {
       console.log("index: ", index);
       sessionStorage.setItem("menu", index);
-      this.barTitle = this.menuExhibition[index].label;
-      console.log("this.menuExhibition: ", this.menuExhibition);
-      this.$router.push({
-        path: this.menuExhibition[index].address,
-        query: {},
-      });
+      if (index !== -1) {
+        this.barTitle = this.menuExhibition[index].label;
+        this.$router.push({
+          path: this.menuExhibition[index].address,
+          query: {},
+        });
+      }
       if (index === 3) {
         this.barTitleShow = false;
+      } else if (index === -1) {
+        this.barTitleShow = true;
+        this.barTitle = "看板";
+        this.menuSelect = -1;
       } else {
         this.barTitleShow = true;
       }

@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-09-27 16:12:46
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-13 13:53:09
+ * @LastEditTime: 2022-10-14 16:29:28
  * @FilePath: \yujing-app\src\components\overview\everyday.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -60,7 +60,7 @@
           </div>
           <div>
             <div class="label">完成率:</div>
-            <div>{{ v.completion }}%</div>
+            <div>{{ v.completion }}</div>
           </div>
         </div>
       </div>
@@ -120,6 +120,17 @@ export default {
           console.log("listsavedata", res);
           if (res.status === "1") {
             this.dataList = res.msg.data;
+            for (let i = 0; i < this.dataList.length; i++) {
+              if (this.dataList[i].Target > 0) {
+                this.dataList[i].completion =
+                  (
+                    (this.dataList[i].Actual / this.dataList[i].Target) *
+                    100
+                  ).toFixed(0) + "%";
+              } else {
+                this.dataList[i].completion = "0%";
+              }
+            }
           }
         })
         .catch((err) => {

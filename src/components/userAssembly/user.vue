@@ -2,7 +2,7 @@
  * @Author: DESKTOP-CQREP7P\easy zhou03041516@163.com
  * @Date: 2022-08-03 09:20:42
  * @LastEditors: DESKTOP-CQREP7P\easy zhou03041516@163.com
- * @LastEditTime: 2022-10-12 11:12:08
+ * @LastEditTime: 2022-10-14 13:35:27
  * @FilePath: \yujing-app\src\components\user.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -52,6 +52,9 @@
       <van-cell-group>
         <!-- <van-cell title="账号管理" is-link to="/account" /> -->
         <van-cell title="菜单设置" is-link @click="jumpTwo()" />
+      </van-cell-group>
+      <van-cell-group>
+        <van-cell title="清理缓存" is-link @click="jumpThree('清理缓存')" />
       </van-cell-group>
       <div class="button">
         <van-button type="danger" block round @click="tuichu"
@@ -120,7 +123,11 @@ export default {
       }
       window.android.Tiaozhuan("菜单设置");
     },
+    jumpThree() {
+      window.android.Tiaozhuan("清理缓存");
+    },
     tuichu() {
+      localStorage.setItem("user", null);
       sessionStorage.setItem("menu", -1);
       if (process.env.NODE_ENV === "development") {
         this.$router.push({ path: "/sign", query: {} });
