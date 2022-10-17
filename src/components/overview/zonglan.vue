@@ -1,5 +1,6 @@
 <template>
   <div class="zonglan">
+    <!-- {{ i }} -->
     <div class="overview-top">
       <div>
         <div>生产班次</div>
@@ -97,6 +98,7 @@ export default {
       timer: null,
       timer2: null,
       overviewData: [],
+      i: 0,
     };
   },
   watch: {
@@ -144,7 +146,7 @@ export default {
       this.$http
         .request("post", this.$API.kanban, params)
         .then((res) => {
-          console.log("queryKanban", res);
+          // console.log("queryKanban", res);
           if (res.status === "1") {
             this.topList = res.msg;
             if (this.topList.Target > 0) {
@@ -174,10 +176,11 @@ export default {
               }
             }
           }
+          this.i++;
           if (this.timer2 === null) {
             this.timer2 = setInterval(() => {
               this.queryKanban();
-            }, 10000);
+            }, 3000);
           }
         })
         .catch((err) => {
